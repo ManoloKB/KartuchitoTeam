@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ServicioWebPruebaService" targetNamespace="http://oxxoService.Kartuchito.com.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://oxxoService.Kartuchito.com.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://oxxoService.Kartuchito.com.mx/" schemaLocation="serviciowebprueba_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="sayHi">
+    <wsdl:part name="parameters" element="tns:sayHi">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHiResponse">
+    <wsdl:part name="parameters" element="tns:sayHiResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServicioWebPruebaInterface">
+    <wsdl:operation name="sayHi">
+      <wsdl:input name="sayHi" message="tns:sayHi">
+    </wsdl:input>
+      <wsdl:output name="sayHiResponse" message="tns:sayHiResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioWebPruebaServiceSoapBinding" type="tns:ServicioWebPruebaInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayHi">
+      <soap:operation soapAction="urn:SayHi" style="document"/>
+      <wsdl:input name="sayHi">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHiResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWebPruebaService">
+    <wsdl:port name="ServicioWebPruebaPort" binding="tns:ServicioWebPruebaServiceSoapBinding">
+      <soap:address location="http://localhost:8080/KartuchitoWeb/services/ServicioWebPruebaPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
